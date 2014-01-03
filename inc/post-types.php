@@ -74,6 +74,7 @@ function whistles_register_post_types() {
 		/* What features the post type supports. */
 		'supports' => array(
 			'title',
+			'page-attributes',
 			'editor',
 		),
 

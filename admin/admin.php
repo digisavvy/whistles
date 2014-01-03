@@ -37,7 +37,7 @@ function whistles_admin_menu() {
 	$post_type = get_post_type_object( 'whistle' );
 
 	/* Add the whistle post type admin sub-menu. */
-	add_theme_page( 
+	add_theme_page(
 		$post_type->labels->name,
 		$post_type->labels->menu_name,
 		$post_type->cap->edit_posts,
@@ -131,13 +131,14 @@ function whistles_editor_shortcode_popup() {
 	);
 
 	/* Create an array of orderby options. */
-	$orderby = array( 
-		'author' => esc_attr__( 'Author', 'whistles' ),
-		'date'   => esc_attr__( 'Date',   'whistles' ),
-		'ID'     => esc_attr__( 'ID',     'whistles' ),  
-		'rand'   => esc_attr__( 'Random', 'whistles' ),
-		'name'   => esc_attr__( 'Slug',   'whistles' ),
-		'title'  => esc_attr__( 'Title',  'whistles' ),
+	$orderby = array(
+		'author' 		=> esc_attr__( 'Author', 'whistles' ),
+		'date'   		=> esc_attr__( 'Date',   'whistles' ),
+		'ID'     		=> esc_attr__( 'ID',     'whistles' ),
+		'menu_order' 	=> esc_attr__( 'Menu Order', 'whistles' ),
+		'rand'   		=> esc_attr__( 'Random', 'whistles' ),
+		'name'   		=> esc_attr__( 'Slug',   'whistles' ),
+		'title'  		=> esc_attr__( 'Title',  'whistles' ),
 	);
 
 	?>
@@ -146,16 +147,16 @@ function whistles_editor_shortcode_popup() {
 
 			function() {
 
-				jQuery( '#whistles-submit' ).attr( 
-					'value', 
+				jQuery( '#whistles-submit' ).attr(
+					'value',
 					'<?php echo esc_js( __( 'Insert', 'whistles' ) ); ?> ' + jQuery( 'input:radio[name=whistles-type]:checked + label' ).text()
 				);
 
 				jQuery( 'input:radio[name=whistles-type]' ).change(
 					function() {
-						jQuery( '#whistles-submit' ).attr( 
-							'value', 
-							'<?php echo esc_js( __( 'Insert', 'whistles' ) ); ?> ' + jQuery( this ).next( 'label' ).text() 
+						jQuery( '#whistles-submit' ).attr(
+							'value',
+							'<?php echo esc_js( __( 'Insert', 'whistles' ) ); ?> ' + jQuery( this ).next( 'label' ).text()
 						);
 					}
 				);
@@ -169,8 +170,8 @@ function whistles_editor_shortcode_popup() {
 			var orderby = jQuery( 'select#whistles-id-orderby option:selected' ).val();
 			var limit   = jQuery( 'input#whistles-id-limit' ).val();
 
-			window.send_to_editor( 
-				'[whistles type="' + type + '" group="' + group + '" order="' + order + '" orderby="' + orderby + '" limit="' + limit + '"]' 
+			window.send_to_editor(
+				'[whistles type="' + type + '" group="' + group + '" order="' + order + '" orderby="' + orderby + '" limit="' + limit + '"]'
 			);
 		}
 	</script>
@@ -181,7 +182,7 @@ function whistles_editor_shortcode_popup() {
 
 		<?php if ( empty( $terms ) ) { ?>
 			<p>
-				<?php _e( 'You need at least one whistle group to display whistles.', 'whistles' ); ?> 
+				<?php _e( 'You need at least one whistle group to display whistles.', 'whistles' ); ?>
 				<?php if ( current_user_can( 'manage_whistles' ) ) { ?>
 					<a href="<?php echo admin_url( 'edit-tags.php?taxonomy=whistle_group&post_type=whistle' ); ?>"><?php _e( 'Whistle Groups &rarr;', 'whistles' ); ?></a>
 				<?php } ?>
@@ -194,13 +195,13 @@ function whistles_editor_shortcode_popup() {
 				<?php _e( 'Type', 'whistles' ); ?>
 				<?php foreach ( $type as $option_value => $option_label ) { ?>
 					<br />
-					<input type="radio" name="whistles-type" id="<?php echo esc_attr( 'whistles-id-type-' . $option_value ); ?>" value="<?php echo esc_attr( $option_value ); ?>" <?php checked( 'tabs', $option_value ); ?> /> 
+					<input type="radio" name="whistles-type" id="<?php echo esc_attr( 'whistles-id-type-' . $option_value ); ?>" value="<?php echo esc_attr( $option_value ); ?>" <?php checked( 'tabs', $option_value ); ?> />
 					<label for="<?php echo esc_attr( 'whistles-id-type-' . $option_value ); ?>"><?php echo esc_html( $option_label ); ?></label>
 				<?php } ?>
 			</p>
 
 			<p>
-				<label for="<?php echo esc_attr( 'whistles-id-group' ); ?>"><?php _e( 'Group', 'whistles' ); ?></label> 
+				<label for="<?php echo esc_attr( 'whistles-id-group' ); ?>"><?php _e( 'Group', 'whistles' ); ?></label>
 				<br />
 				<select class="widefat" id="<?php echo esc_attr( 'whistles-id-group' ); ?>" name="<?php echo esc_attr( 'whistles-name-group' ); ?>">
 					<?php foreach ( $terms as $term ) { ?>
@@ -210,11 +211,11 @@ function whistles_editor_shortcode_popup() {
 			</p>
 
 			<p>
-				<label for="<?php echo esc_attr( 'whistles-id-limit' ); ?>"><?php _e( 'Number of whistles to display', 'whistles' ); ?></label> 
+				<label for="<?php echo esc_attr( 'whistles-id-limit' ); ?>"><?php _e( 'Number of whistles to display', 'whistles' ); ?></label>
 				<input type="text" maxlength="3" size="3" class="code" id="<?php echo esc_attr( 'whistles-id-limit' ); ?>" name="<?php echo esc_attr( 'whistles-name-limit' ); ?>" value="-1" />
 			</p>
 			<p>
-				<label for="<?php echo esc_attr( 'whistles-id-order' ); ?>"><?php _e( 'Order', 'whistles' ); ?></label> 
+				<label for="<?php echo esc_attr( 'whistles-id-order' ); ?>"><?php _e( 'Order', 'whistles' ); ?></label>
 				<br />
 				<select class="widefat" id="<?php echo esc_attr( 'whistles-id-order' ); ?>" name="<?php echo esc_attr( 'whistles-name-order' ); ?>">
 					<?php foreach ( $order as $option_value => $option_label ) { ?>
