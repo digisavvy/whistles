@@ -28,6 +28,24 @@ The great thing about this method is that you're pretty much able to put whateve
 * "Add Whistles" media button above the post content editor for inserting whistles.
 * "Whistles" widget under the "Appearance > Widgets" admin screen.
 
+## Quick Start Guide
+Using Whistles is easy! There are only a few steps one must follow to get up and "Whistling!"
+
+1. Download, Install and Activate Whistles from the WordPress Plugin Repository: http://wordpress.org/plugins/whistles/
+2. Next, you'll want to Create some Whistles. Whistles can contain all types of content such as text, images videos and more.  
+	* Go to Appearance > Whistles and click "Add New"  
+	* Simply enter your content.  
+	* Select or Create a Whistle Group by doing one of the following: Clicking an available Whistle Group (if you have some that already exist), clicking the 'Add' button or simply by clicking 'Choose from the most used whistle groups' to choose from other exisitng Whistle Groups
+3. Once you have created your Whistles and Whistle Groups, it's time to insert them into your content!  
+	* Click on a Single Page or Post (or any Post Type you wish to include a Whistle)
+	* Click the 'Add Whistles' button
+	* Select the type of Whistle you want (Accordion, Tab or Toggle)
+	* Select the appropriate Whistles Group and select the Order
+	* Finally, click the 'insert' button. and KABOOM! You've got a Whistle!
+ 
+
+
+
 ## Changelog
 
 ### Version 1.1.1
